@@ -162,6 +162,7 @@ export function Quiz() {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -175,6 +176,7 @@ export function Quiz() {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
