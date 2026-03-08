@@ -193,6 +193,7 @@ export function Quiz() {
                   id="name"
                   name="name"
                   type="text"
+                  autoComplete="name"
                   value={name}
                   onChange={(ev) => {
                     setName(ev.target.value);
@@ -221,6 +222,7 @@ export function Quiz() {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(ev) => {
                     setEmail(ev.target.value);

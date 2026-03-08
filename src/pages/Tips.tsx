@@ -250,6 +250,17 @@ export function Tips() {
                 offers confidential support for students. You don’t have to do this alone.
               </p>
             </section>
+
+            {/* Back to top */}
+            <div className="mt-12 text-left">
+              <button
+                type="button"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="font-sans text-sm font-medium text-ink/80 hover:text-ink transition-colors"
+              >
+                Back to top ↑
+              </button>
+            </div>
           </article>
 
           {/* Desktop TOC - fixed in place from the start so it never moves on scroll */}

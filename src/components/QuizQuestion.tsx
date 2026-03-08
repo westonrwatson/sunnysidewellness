@@ -16,6 +16,8 @@ export function QuizQuestion({ data, selected, onSelect }: QuizQuestionProps) {
         {data.options.map((opt: QuizOption) => (
           <button
             key={opt.value}
+            id={`${data.id}-${opt.value}`}
+            name={data.id}
             type="button"
             onClick={() => onSelect(opt.value)}
             className={`min-h-[120px] px-5 py-4 rounded-2xl font-sans text-lg text-center text-ink
