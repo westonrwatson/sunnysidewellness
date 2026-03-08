@@ -3,7 +3,28 @@ import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
 import { Quiz } from './pages/Quiz';
 import { Tips } from './pages/Tips';
-import backgroundImage from './assets/background-optimized.jpg';
+
+function GradientBlob() {
+  return (
+    <div className="fixed inset-0 -z-10 overflow-hidden" aria-hidden>
+      <div
+        className="gradient-blob-animated absolute inset-[-10%]"
+        style={{
+          background: `
+            radial-gradient(
+              circle 60vmax at 50% 90%,
+              #e2792c 35%,
+              #cb4e29 48%,
+              #bb5f92 53%,
+              #9589b1 100%,
+              #9589b1 100%
+            )
+          `,
+        }}
+      />
+    </div>
+  );
+}
 
 function AppContent() {
   const location = useLocation();
@@ -11,16 +32,7 @@ function AppContent() {
 
   return (
     <>
-      {!isTips && (
-        <div
-          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundAttachment: 'fixed',
-          }}
-          aria-hidden
-        />
-      )}
+      {!isTips && <GradientBlob />}
       {isTips && (
         <div
           className="fixed inset-0 -z-10 bg-cream"
