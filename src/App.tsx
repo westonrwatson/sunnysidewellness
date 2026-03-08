@@ -12,7 +12,7 @@ function GradientBlob() {
         style={{
           background: `
             radial-gradient(
-              circle 60vmax at 50% 90%,
+              circle 65vmax at 50% 90%,
               #e2792c 35%,
               #cb4e29 48%,
               #bb5f92 53%,

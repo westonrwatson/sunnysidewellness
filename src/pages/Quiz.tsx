@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { questions } from '../data/questions';
 import { QuizQuestion } from '../components/QuizQuestion';
@@ -31,6 +31,11 @@ export function Quiz() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formErrors, setFormErrors] = useState<{ name?: string; email?: string }>({});
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  const isValidEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
+  const nameContainsNumbers = (s: string) => /\d/.test(s.trim());
 
   const q = questions[currentQ];
   const selected = q ? (answers[q.id as keyof QuizAnswers] as string) ?? null : null;
@@ -106,11 +111,34 @@ export function Quiz() {
     }
   }, [step]);
 
+  useEffect(() => {
+    if (step === 'form') {
+      nameInputRef.current?.focus();
+    }
+  }, [step]);
+
   const handleSeeResults = async () => {
+    const errors: { name?: string; email?: string } = {};
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+
+    if (trimmedName && nameContainsNumbers(trimmedName)) {
+      errors.name = 'Name cannot contain numbers';
+    }
+    if (trimmedEmail && !isValidEmail(trimmedEmail)) {
+      errors.email = 'Please enter a valid email address';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormErrors({});
     setSubmitStatus('loading');
     const result = await submitToSheets({
-      name: name.trim(),
-      email: email.trim(),
+      name: trimmedName,
+      email: trimmedEmail,
       q1: answers.q1 ?? '',
       q2: answers.q2 ?? '',
       q3: answers.q3 ?? '',
@@ -161,14 +189,29 @@ export function Quiz() {
                   Name
                 </label>
                 <input
+                  ref={nameInputRef}
                   id="name"
                   name="name"
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(ev) => {
+                    setName(ev.target.value);
+                    if (formErrors.name) setFormErrors((prev) => ({ ...prev, name: undefined }));
+                  }}
+                  onBlur={(e) => {
+                    const t = (e.target as HTMLInputElement).value.trim();
+                    if (t && nameContainsNumbers(t)) {
+                      setFormErrors((prev) => ({ ...prev, name: 'Name cannot contain numbers' }));
+                    } else {
+                      setFormErrors((prev) => ({ ...prev, name: undefined }));
+                    }
+                  }}
                   className="w-full px-4 py-3 rounded-2xl quiz-input-glass"
                   placeholder="Your name"
                 />
+                {formErrors.name && (
+                  <p className="mt-1 font-sans text-sm text-red-500" role="alert">{formErrors.name}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="block font-sans text-base font-medium text-white mb-1">
@@ -179,17 +222,31 @@ export function Quiz() {
                   name="email"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(ev) => {
+                    setEmail(ev.target.value);
+                    if (formErrors.email) setFormErrors((prev) => ({ ...prev, email: undefined }));
+                  }}
+                  onBlur={(e) => {
+                    const t = (e.target as HTMLInputElement).value.trim();
+                    if (t && !isValidEmail(t)) {
+                      setFormErrors((prev) => ({ ...prev, email: 'Please enter a valid email address' }));
+                    } else {
+                      setFormErrors((prev) => ({ ...prev, email: undefined }));
+                    }
+                  }}
                   className="w-full px-4 py-3 rounded-2xl quiz-input-glass"
                   placeholder="your@email.com"
                 />
+                {formErrors.email && (
+                  <p className="mt-1 font-sans text-sm text-red-500" role="alert">{formErrors.email}</p>
+                )}
                 <p className="mt-4 font-sans text-sm text-white font-medium text-center italic">
                   Optional: Share your contact info to receive a follow-up survey.
                 </p>
               </div>
               <div className="min-h-[10px]" aria-live="polite">
                 {submitStatus === 'error' && (
-                  <p className="text-accent-rust text-sm">
+                  <p className="text-red-500 text-sm" role="alert">
                     Something went wrong. Please try again.
                   </p>
                 )}
