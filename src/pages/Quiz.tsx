@@ -184,7 +184,7 @@ export function Quiz() {
             </div>
             <div className="mt-1 sm:mt-2 space-y-4 sm:space-y-5">
               <div>
-                <label htmlFor="name" className="block font-sans text-base font-medium text-white mb-1">
+                <label htmlFor="name" className="block font-sans text-sm sm:text-base font-medium text-white mb-1">
                   Name
                 </label>
                 <input
@@ -206,7 +206,7 @@ export function Quiz() {
                       setFormErrors((prev) => ({ ...prev, name: undefined }));
                     }
                   }}
-                  className="w-full px-4 py-2.5 sm:py-3 rounded-2xl quiz-input-glass"
+                  className="w-full px-4 py-2.5 sm:py-3 rounded-2xl quiz-input-glass text-sm sm:text-base"
                   placeholder="Your name"
                 />
                 {formErrors.name && (
@@ -214,7 +214,7 @@ export function Quiz() {
                 )}
               </div>
               <div>
-                <label htmlFor="email" className="block font-sans text-base font-medium text-white mb-1">
+                <label htmlFor="email" className="block font-sans text-sm sm:text-base font-medium text-white mb-1">
                   Email
                 </label>
                 <input
@@ -235,7 +235,7 @@ export function Quiz() {
                       setFormErrors((prev) => ({ ...prev, email: undefined }));
                     }
                   }}
-                  className="w-full px-4 py-2.5 sm:py-3 rounded-2xl quiz-input-glass"
+                  className="w-full px-4 py-2.5 sm:py-3 rounded-2xl quiz-input-glass text-sm sm:text-base"
                   placeholder="your@email.com"
                 />
                 {formErrors.email && (

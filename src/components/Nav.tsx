@@ -108,10 +108,12 @@ export function Nav() {
         {/* Mobile links - same nav, expands below */}
         <div
           className={`md:hidden overflow-hidden ${
-            mobileOpen ? 'max-h-40 opacity-100 mt-4 pt-4 border-t border-white/20' : 'max-h-0 opacity-0 mt-0 pt-0 border-t-0'
+            mobileOpen ? 'max-h-40 opacity-100 mt-3 pt-3 border-t border-white/20' : 'max-h-0 opacity-0 mt-0 pt-0 border-t-0'
           } transition-all duration-200`}
         >
-          <div className="flex flex-col gap-4 items-start">{navLinks}</div>
+          <div className="mobile-nav-menu flex flex-col gap-1 -mx-4 [&>a]:min-h-[40px] [&>a]:py-2 [&>a]:px-4 [&>a]:rounded-lg [&>a]:active:bg-white/10">
+            {navLinks}
+          </div>
         </div>
       </div>
     </nav>

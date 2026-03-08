@@ -169,6 +169,20 @@
   transform: scaleX(1);
 }
 
+/* Mobile nav - full-width tap targets, no underline, bold when selected */
+@media (max-width: 767px) {
+  .mobile-nav-menu .nav-link {
+    display: block !important;
+    width: 100% !important;
+  }
+  .mobile-nav-menu .nav-link::after {
+    display: none;
+  }
+  .mobile-nav-menu .nav-link-active {
+    font-weight: 700;
+  }
+}
+
 .averia-serif-libre-light {
   font-family: "Averia Serif Libre", serif;
   font-weight: 300;
