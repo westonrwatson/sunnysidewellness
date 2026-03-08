@@ -16,7 +16,7 @@ export async function submitToSheets(data: SheetSubmission): Promise<{ success: 
   try {
     const res = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(data),
     });
 
