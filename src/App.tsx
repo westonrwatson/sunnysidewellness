@@ -3,7 +3,7 @@ import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
 import { Quiz } from './pages/Quiz';
 import { Tips } from './pages/Tips';
-import backgroundImage from './assets/background.png';
+import backgroundImage from './assets/background-optimized.jpg';
 
 function AppContent() {
   const location = useLocation();
