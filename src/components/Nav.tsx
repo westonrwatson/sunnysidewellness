@@ -73,7 +73,7 @@ export function Nav() {
                 isCreamBg ? 'text-accent-orange' : 'text-cream'
               }`}
             >
-              Sunny Side Wellness
+              Sunny Side Wellness Guide
             </span>
           </Link>
 
