@@ -115,6 +115,7 @@
 }
 
 .quiz-back-button {
+  min-height: 48px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -129,6 +130,7 @@
 }
 
 .btn-orange-glass {
+  min-height: 48px;
   background: var(--color-accent-orange);
   box-shadow:
     0 4px 16px rgba(0, 0, 0, 0.15),

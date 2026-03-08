@@ -117,7 +117,7 @@ export function Quiz() {
     }
   }, [step]);
 
-  const handleSeeResults = async () => {
+  const handleSeeResults = () => {
     const errors: { name?: string; email?: string } = {};
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
@@ -135,8 +135,9 @@ export function Quiz() {
     }
 
     setFormErrors({});
-    setSubmitStatus('loading');
-    const result = await submitToSheets({
+    setStep('results');
+
+    submitToSheets({
       name: trimmedName,
       email: trimmedEmail,
       q1: answers.q1 ?? '',
@@ -144,8 +145,6 @@ export function Quiz() {
       q3: answers.q3 ?? '',
       q4: answers.q4 ?? '',
     });
-    setSubmitStatus(result.success ? 'idle' : 'error');
-    setStep('results');
   };
 
   if (step === 'results') {
@@ -172,18 +171,18 @@ export function Quiz() {
   if (step === 'form') {
     return (
       <QuizShell>
-        <div className="quiz-container-glass rounded-2xl p-8 md:p-10 min-h-[520px]">
-          <div className="space-y-7">
+        <div className="quiz-container-glass rounded-2xl p-5 sm:p-8 md:p-10 min-h-[440px] sm:min-h-[500px] flex flex-col">
+          <div className="flex-1 space-y-4 sm:space-y-5">
             <ProgressBar current={5} total={5} />
-            <div className="space-y-2">
-              <h1 className="averia-serif-libre-bold-italic text-2xl md:text-3xl text-white text-center">
+            <div className="space-y-1 sm:space-y-2">
+              <h1 className="averia-serif-libre-bold-italic text-xl sm:text-2xl md:text-3xl text-white text-center">
                 We would love to follow up with you!
               </h1>
-              <p className="font-sans text-white text-center">
+              <p className="font-sans text-sm sm:text-base text-white text-center">
                 We&apos;ll send you a quick survey in a week to see how you&apos;re doing.
               </p>
             </div>
-            <div className="mt-2 space-y-5">
+            <div className="mt-1 sm:mt-2 space-y-4 sm:space-y-5">
               <div>
                 <label htmlFor="name" className="block font-sans text-base font-medium text-white mb-1">
                   Name
@@ -207,7 +206,7 @@ export function Quiz() {
                       setFormErrors((prev) => ({ ...prev, name: undefined }));
                     }
                   }}
-                  className="w-full px-4 py-3 rounded-2xl quiz-input-glass"
+                  className="w-full px-4 py-2.5 sm:py-3 rounded-2xl quiz-input-glass"
                   placeholder="Your name"
                 />
                 {formErrors.name && (
@@ -236,13 +235,13 @@ export function Quiz() {
                       setFormErrors((prev) => ({ ...prev, email: undefined }));
                     }
                   }}
-                  className="w-full px-4 py-3 rounded-2xl quiz-input-glass"
+                  className="w-full px-4 py-2.5 sm:py-3 rounded-2xl quiz-input-glass"
                   placeholder="your@email.com"
                 />
                 {formErrors.email && (
                   <p className="mt-1 font-sans text-sm text-red-500" role="alert">{formErrors.email}</p>
                 )}
-                <p className="mt-4 font-sans text-sm text-white font-medium text-center italic">
+                <p className="mt-2 sm:mt-4 font-sans text-sm text-white font-medium text-center italic">
                   Optional: Share your contact info to receive a follow-up survey.
                 </p>
               </div>
@@ -253,24 +252,24 @@ export function Quiz() {
                   </p>
                 )}
               </div>
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  onClick={handleFormBack}
-                  className="w-full py-4 rounded-2xl font-sans font-medium text-ink quiz-back-button"
-                >
-                  Back
-                </button>
-                <button
-                  type="button"
-                  onClick={handleSeeResults}
-                  disabled={submitStatus === 'loading'}
-                  className="w-full py-4 rounded-2xl font-sans font-semibold text-white btn-orange-glass disabled:opacity-70 disabled:pointer-events-none"
-                >
-                  {submitStatus === 'loading' ? 'Submitting...' : 'See my results'}
-                </button>
-              </div>
             </div>
+          </div>
+          <div className="mt-5 sm:mt-7 grid grid-cols-2 gap-3 sm:gap-4 shrink-0">
+            <button
+              type="button"
+              onClick={handleFormBack}
+              className="w-full py-4 rounded-2xl font-sans font-medium text-ink quiz-back-button"
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              onClick={handleSeeResults}
+              disabled={submitStatus === 'loading'}
+              className="w-full py-4 rounded-2xl font-sans font-semibold text-white btn-orange-glass disabled:opacity-70 disabled:pointer-events-none"
+            >
+              {submitStatus === 'loading' ? 'Submitting...' : 'See my results'}
+            </button>
           </div>
         </div>
       </QuizShell>
@@ -281,13 +280,13 @@ export function Quiz() {
 
   return (
     <QuizShell>
-      <div className="quiz-container-glass rounded-2xl p-8 md:p-10 min-h-[520px]">
-          <div className="space-y-8">
+      <div className="quiz-container-glass rounded-2xl p-5 sm:p-8 md:p-10 min-h-[440px] sm:min-h-[500px] flex flex-col">
+          <div className="flex-1 space-y-4 sm:space-y-8">
             <ProgressBar current={progressStep} total={questions.length} />
             <QuizQuestion data={q} selected={selected} onSelect={handleSelect} />
           </div>
           <div
-            className={`mt-10 grid gap-4 ${currentQ > 0 ? 'grid-cols-2' : 'grid-cols-1'}`}
+            className={`mt-5 sm:mt-7 grid gap-3 sm:gap-4 shrink-0 ${currentQ > 0 ? 'grid-cols-2' : 'grid-cols-1'}`}
           >
             {currentQ > 0 && (
               <button

@@ -78,12 +78,12 @@ export function Home() {
 
   return (
     <QuizShell>
-      <div className="quiz-container-glass rounded-2xl p-8 md:p-10 min-h-[520px]">
-        <div className="space-y-8">
+      <div className="quiz-container-glass rounded-2xl p-5 sm:p-8 md:p-10 min-h-[440px] sm:min-h-[500px] flex flex-col">
+        <div className="flex-1 space-y-4 sm:space-y-8">
           <ProgressBar current={1} total={questions.length} />
           <QuizQuestion data={q} selected={selected} onSelect={handleSelect} />
         </div>
-        <div className="mt-10 grid gap-4 grid-cols-1">
+        <div className="mt-5 sm:mt-7 grid gap-3 sm:gap-4 grid-cols-1 shrink-0">
           <button
             type="button"
             onClick={handleContinue}
