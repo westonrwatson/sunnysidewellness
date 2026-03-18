@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 const SECTIONS = [
   { id: 'intro', label: 'Introduction' },
@@ -12,11 +12,28 @@ const SECTIONS = [
 
 export function Tips() {
   const [activeId, setActiveId] = useState<string>(SECTIONS[0].id);
+  const [barStyle, setBarStyle] = useState<{ top: number; height: number }>({ top: 0, height: 0 });
+  const tocListRef = useRef<HTMLUListElement>(null);
   const ignoreScrollUntil = useRef(0);
+
+  useLayoutEffect(() => {
+    const list = tocListRef.current;
+    if (!list) return;
+    const activeLi = list.querySelector(`[data-section-id="${activeId}"]`) as HTMLElement | null;
+    if (activeLi) {
+      setBarStyle({ top: activeLi.offsetTop, height: activeLi.offsetHeight });
+    }
+  }, [activeId]);
 
   useEffect(() => {
     const updateActive = () => {
       if (Date.now() < ignoreScrollUntil.current) return;
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      if (scrollBottom >= docHeight - 20) {
+        setActiveId(SECTIONS[SECTIONS.length - 1].id);
+        return;
+      }
       const offset = 120;
       for (let i = SECTIONS.length - 1; i >= 0; i--) {
         const el = document.getElementById(SECTIONS[i].id);
@@ -203,7 +220,7 @@ export function Tips() {
             </section>
 
             <section id="basics" className="mt-16 scroll-mt-28">
-              <h2 className="averia-serif-libre-bold-italic text-2xl md:text-3xl text-accent-sage">
+              <h2 className="averia-serif-libre-bold-italic text-2xl md:text-3xl text-accent-orange">
                 Check your basics
               </h2>
               <p className="mt-4 font-sans text-ink/90 leading-relaxed">
@@ -225,7 +242,7 @@ export function Tips() {
                   href="https://www.mindtools.com/an20l52/alderfers-erg-theory"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-sage font-medium hover:underline"
+                  className="text-accent-orange font-medium hover:underline"
                 >
                   Learn more about ERG theory →
                 </a>
@@ -269,12 +286,21 @@ export function Tips() {
               className="fixed top-30 right-[max(1.5rem,calc((100vw-72rem)/2+1rem))] w-50"
               aria-label="Table of contents"
             >
-              <p className="font-sans text-xs font-semibold uppercase tracking-wider text-ink/60 mb-4">
+              <p className="font-sans text-xs font-semibold uppercase tracking-wider text-ink/60 mb-4 pl-3">
                 In this article
               </p>
-              <ul className="space-y-2">
+              <ul ref={tocListRef} className="space-y-2 relative pl-3">
+                <span
+                  className="absolute left-0 w-0.5 bg-ink rounded-full pointer-events-none"
+                  style={{
+                    top: barStyle.top,
+                    height: barStyle.height,
+                    transition: 'top 0.2s ease-out, height 0.2s ease-out',
+                  }}
+                  aria-hidden
+                />
                 {SECTIONS.map(({ id, label }) => (
-                  <li key={id}>
+                  <li key={id} data-section-id={id}>
                     <button
                       type="button"
                       onClick={() => scrollTo(id)}
