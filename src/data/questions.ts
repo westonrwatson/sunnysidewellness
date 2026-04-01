@@ -19,8 +19,8 @@ export const questions: QuizQuestion[] = [
     options: [
       { label: 'Schoolwork & deadlines', value: 'schoolwork', theories: ['erg'] },
       { label: 'Relationships & feeling alone', value: 'relationships', theories: ['erg', 'abc'] },
-      { label: 'My health & daily basics', value: 'health', theories: ['erg'] },
-      { label: 'Not sure where to start', value: 'unsure', theories: ['smart', 'abc'] },
+      { label: 'My health & daily routine', value: 'health', theories: ['erg'] },
+      { label: 'A mix of everything', value: 'unsure', theories: ['smart', 'abc'] },
     ],
   },
   {
@@ -49,7 +49,7 @@ export const questions: QuizQuestion[] = [
     options: [
       { label: 'Sleep, meals, or self-care', value: 'existence', theories: ['erg'] },
       { label: 'Time with friends or family', value: 'relatedness', theories: ['erg', 'abc'] },
-      { label: 'Learning or improving something', value: 'growth', theories: ['erg', 'abc'] },
+      { label: 'Learning or improving skills', value: 'growth', theories: ['erg', 'abc'] },
       { label: 'Work or school tasks', value: 'tasks', theories: ['erg', 'smart'] },
     ],
   },
