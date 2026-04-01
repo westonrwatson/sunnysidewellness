@@ -112,7 +112,13 @@ export function Quiz() {
   }, [step]);
 
   useEffect(() => {
-    if (step === 'form') {
+    if (step !== 'form') return;
+    // On touch-first devices, avoid auto-focus so the soft keyboard doesn’t open immediately.
+    // Desktop / mouse users can still start typing right away.
+    const isTouchPrimary =
+      window.matchMedia('(pointer: coarse)').matches &&
+      window.matchMedia('(hover: none)').matches;
+    if (!isTouchPrimary) {
       nameInputRef.current?.focus();
     }
   }, [step]);
