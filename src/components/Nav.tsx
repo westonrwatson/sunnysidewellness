@@ -17,8 +17,8 @@ const linkClass = (isCreamBg: boolean, isActive: boolean) =>
 
 export function Nav() {
   const location = useLocation();
-  const isTips = location.pathname === '/tips';
-  const isCreamBg = isTips;
+  const isCreamBg =
+    location.pathname === '/tips' || location.pathname === '/about-this-site';
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 

@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SECTIONS = [
   { id: 'intro', label: 'Introduction' },
@@ -93,14 +94,14 @@ export function Tips() {
                 sleep, who you reach out to, how you prepare—and what you can’t—exam curves,
                 other people’s choices, the weather. Focus your energy only on the first column.
               </p>
-              <blockquote className="mt-6 pl-4 border-l-4 border-accent-orange/50 font-sans text-ink/85 italic">
-                &quot;Small wins reinforce that your actions matter. Set one manageable goal, achieve
-                it, and acknowledge that your effort led to the result.&quot; Research links internal
+              <div className="mt-6 pl-4 border-l-4 border-accent-orange/50 font-sans text-ink/85 italic">
+                Small wins reinforce that your actions matter. Set one manageable goal, achieve
+                it, and acknowledge that your effort led to the result. Research links internal
                 locus of control to better health outcomes and lower stress.
-              </blockquote>
+              </div>
               <p className="mt-4 font-sans text-ink/90 leading-relaxed">
                 <a
-                  href="https://www.simplypsychology.org/locus-of-control.html"
+                  href="https://www.youtube.com/watch?v=JaojNFyZKQk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent-orange font-medium hover:underline"
@@ -129,13 +130,13 @@ export function Tips() {
                 morning, time-block your top priority. Put it in your calendar. Structure keeps
                 work from piling up and minimizes last-minute panic.
               </p>
-              <blockquote className="mt-6 pl-4 border-l-4 border-accent-lavender/50 font-sans text-ink/85 italic">
-                &quot;Time-bound goals create urgency and structure, which minimize procrastination
-                and exam-period stress.&quot; When you know exactly what to do, it’s easier to start.
-              </blockquote>
+              <div className="mt-6 pl-4 border-l-4 border-accent-lavender/50 font-sans text-ink/85 italic">
+                Time-bound goals create urgency and structure, which minimize procrastination
+                and exam-period stress. When you know exactly what to do, it’s easier to start.
+              </div>
               <p className="mt-4 font-sans text-ink/90 leading-relaxed">
                 <a
-                  href="https://www.mindtools.com/pages/article/smart-goals.htm"
+                  href="https://positivepsychology.com/smart-goals/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent-lavender font-medium hover:underline"
@@ -166,10 +167,10 @@ export function Tips() {
                 confidence in you can boost your own. Verbal persuasion is one of Bandura’s key
                 sources of self-efficacy.
               </p>
-              <blockquote className="mt-6 pl-4 border-l-4 border-accent-teal/50 font-sans text-ink/85 italic">
-                &quot;People with high self-efficacy recover faster from failure and experience lower
-                stress.&quot; Start small, succeed, and let the evidence stack up.
-              </blockquote>
+              <div className="mt-6 pl-4 border-l-4 border-accent-teal/50 font-sans text-ink/85 italic">
+                People with high self-efficacy recover faster from failure and experience lower
+                stress. Start small, succeed, and let the evidence stack up.
+              </div>
               <p className="mt-4 font-sans text-ink/90 leading-relaxed">
                 <a
                   href="https://www.simplypsychology.org/self-efficacy.html"
@@ -203,10 +204,11 @@ export function Tips() {
                 competency and carries over into other areas. When one need is frustrated,
                 research shows we can often compensate by addressing another.
               </p>
-              <blockquote className="mt-6 pl-4 border-l-4 border-accent-rose/50 font-sans text-ink/85 italic">
-                &quot;When these three psychological needs are satisfied, they foster high-quality
-                motivation and enhanced performance.&quot; — Self-determination theory research.
-              </blockquote>
+              <div className="mt-6 pl-4 border-l-4 border-accent-rose/50 font-sans text-ink/85 italic">
+                Research on self-determination theory suggests that when autonomy, belonging, and
+                competency needs are met, people tend toward stronger motivation and better
+                performance.
+              </div>
               <p className="mt-4 font-sans text-ink/90 leading-relaxed">
                 <a
                   href="https://selfdeterminationtheory.org/theory/"
@@ -237,9 +239,14 @@ export function Tips() {
                 impossible, strengthening a relationship or taking care of your body can
                 restore balance. Don’t underestimate the power of the basics.
               </p>
+              <div className="mt-6 pl-4 border-l-4 border-accent-orange/50 font-sans text-ink/85 italic">
+                ERG theory maps needs onto existence (food, safety, sleep), relatedness with
+                others, and growth through learning and new skills. When one level is strained,
+                shoring up another can help you rebalance—often starting with the basics.
+              </div>
               <p className="mt-4 font-sans text-ink/90 leading-relaxed">
                 <a
-                  href="https://www.mindtools.com/an20l52/alderfers-erg-theory"
+                  href="https://educationlibrary.org/alderfers-erg-theory/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent-orange font-medium hover:underline"
@@ -269,7 +276,7 @@ export function Tips() {
             </section>
 
             {/* Back to top */}
-            <div className="mt-12 text-left">
+            <div className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 text-left">
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -277,6 +284,15 @@ export function Tips() {
               >
                 Back to top ↑
               </button>
+              <span className="font-sans text-sm text-ink/40 hidden sm:inline" aria-hidden>
+                |
+              </span>
+              <Link
+                to="/about-this-site"
+                className="font-sans text-sm font-medium text-ink/80 hover:text-ink transition-colors"
+              >
+                How this site was made
+              </Link>
             </div>
           </article>
 

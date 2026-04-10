@@ -69,7 +69,7 @@ export const recommendations: Record<TheoryKey, Recommendation[]> = {
       theoryName: 'SMART Goals',
       theoryBlurb:
         'SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound) direct attention, increase effort, and reduce the anxiety of uncertainty.',
-      link: 'https://www.mindtools.com/pages/article/smart-goals.htm',
+      link: 'https://positivepsychology.com/smart-goals/',
     },
     {
       id: 'smart-2',
@@ -82,7 +82,7 @@ export const recommendations: Record<TheoryKey, Recommendation[]> = {
       theoryName: 'SMART Goals',
       theoryBlurb:
         'Measurable milestones support motivation and help you adjust when needed. Research shows SMART goal interventions improve goal attainment and well-being.',
-      link: 'https://www.mindtools.com/pages/article/smart-goals.htm',
+      link: 'https://positivepsychology.com/smart-goals/',
     },
     {
       id: 'smart-3',
@@ -95,7 +95,7 @@ export const recommendations: Record<TheoryKey, Recommendation[]> = {
       theoryName: 'SMART Goals',
       theoryBlurb:
         'Time-bound goals reduce procrastination and exam-period stress. Studies link structured goal-setting to greater need satisfaction.',
-      link: 'https://www.mindtools.com/pages/article/smart-goals.htm',
+      link: 'https://positivepsychology.com/smart-goals/',
     },
   ],
   selfEfficacy: [
@@ -205,7 +205,7 @@ export const recommendations: Record<TheoryKey, Recommendation[]> = {
       theoryName: 'ERG Theory',
       theoryBlurb:
         'ERG Theory identifies Existence, Relatedness, and Growth needs. Existence needs—food, safety, shelter—are foundational. Neglecting them amplifies stress.',
-      link: 'https://www.mindtools.com/an20l52/alderfers-erg-theory',
+      link: 'https://educationlibrary.org/alderfers-erg-theory/',
     },
     {
       id: 'erg-2',
@@ -218,7 +218,7 @@ export const recommendations: Record<TheoryKey, Recommendation[]> = {
       theoryName: 'ERG Theory',
       theoryBlurb:
         'Relatedness includes belonging, love, and relationships. Alderfer found that when one need is frustrated, we can compensate by addressing another.',
-      link: 'https://www.mindtools.com/an20l52/alderfers-erg-theory',
+      link: 'https://educationlibrary.org/alderfers-erg-theory/',
     },
     {
       id: 'erg-3',
@@ -231,7 +231,7 @@ export const recommendations: Record<TheoryKey, Recommendation[]> = {
       theoryName: 'ERG Theory',
       theoryBlurb:
         'Growth needs include achievement and learning. ERG Theory shows that people can pursue multiple needs at once—existence, relatedness, and growth.',
-      link: 'https://www.mindtools.com/an20l52/alderfers-erg-theory',
+      link: 'https://educationlibrary.org/alderfers-erg-theory/',
     },
   ],
 };

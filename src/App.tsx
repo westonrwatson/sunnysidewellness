@@ -3,6 +3,7 @@ import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
 import { Quiz } from './pages/Quiz';
 import { Tips } from './pages/Tips';
+import { AboutThisSite } from './pages/AboutThisSite';
 
 function GradientBlob() {
   return (
@@ -28,12 +29,13 @@ function GradientBlob() {
 
 function AppContent() {
   const location = useLocation();
-  const isTips = location.pathname === '/tips';
+  const isCreamPage =
+    location.pathname === '/tips' || location.pathname === '/about-this-site';
 
   return (
     <>
-      {!isTips && <GradientBlob />}
-      {isTips && (
+      {!isCreamPage && <GradientBlob />}
+      {isCreamPage && (
         <div
           className="fixed inset-0 -z-10 bg-cream"
           aria-hidden
@@ -44,6 +46,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/tips" element={<Tips />} />
+        <Route path="/about-this-site" element={<AboutThisSite />} />
       </Routes>
     </>
   );

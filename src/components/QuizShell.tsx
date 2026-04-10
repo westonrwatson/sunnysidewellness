@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 interface QuizShellProps {
   children: React.ReactNode;
   variant?: 'default' | 'results';
@@ -45,6 +47,14 @@ export function QuizShell({ children, variant = 'default', centerVertical = true
             BYU Counseling & Psychological Services
           </a>
           .
+        </p>
+        <p className="mt-4 text-center">
+          <Link
+            to="/about-this-site"
+            className="font-sans text-sm text-cream/90 hover:text-cream underline underline-offset-2 transition-colors"
+          >
+            How this site was made
+          </Link>
         </p>
       </div>
     </main>
