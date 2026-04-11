@@ -19,9 +19,7 @@ export function AboutThisSite() {
           <p className="mt-4 font-sans text-ink/90 leading-relaxed">
             Generative AI tools (for example, coding assistants and writing support) helped draft
             and refine parts of the website: layout, wording, accessibility tweaks, and routine
-            engineering tasks. Human authors reviewed and edited the content and chose which ideas
-            to include. AI did not replace judgment about what is accurate or appropriate for
-            students; it sped up implementation and iteration.
+            engineering tasks. That being said, some information may not be accurate.
           </p>
         </section>
 
