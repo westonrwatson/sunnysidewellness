@@ -17,9 +17,10 @@ export function AboutThisSite() {
             Use of AI
           </h2>
           <p className="mt-4 font-sans text-ink/90 leading-relaxed">
-            Generative AI tools (for example, coding assistants and writing support) helped draft
-            and refine parts of the website: layout, wording, accessibility tweaks, and routine
-            engineering tasks. That being said, some information may not be accurate.
+            This website was developed and polished with the assistance of generative AI tools. While
+            this content is based on external sources, users should be aware that AI-generated
+            material may occasionally contain inaccuracies. For further details and additional
+            context, please refer to the provided source links attached to each topic.
           </p>
         </section>
 
